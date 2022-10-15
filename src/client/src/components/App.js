@@ -1,10 +1,20 @@
-import React from "react";
-import '../styles/App.css';
-const App = () => {
+import {Switch, Route, BrowserRouter  } from "react-router-dom";
+import AddIssue from "./AddIssue";
+import IssuePage from './IssuePage';
+import React from 'react';
+
+function App() {
+  
   return (
-    <div id="main">
-    </div>
-  )
+    <>
+    <BrowserRouter>
+    <Switch>
+      <Route exact path = "/addissue" component={AddIssue}/>
+      <Route exact path = "/" component={IssuePage} />
+    </Switch>
+    </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
