@@ -1,4 +1,3 @@
-
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
@@ -6,7 +5,7 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, "/dist"),
-        filename: "index_bundle.js",
+        filename: "index_bundle.js"
     },
     devServer: {
         proxy: {
@@ -20,12 +19,20 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(jpg|png|svg)$/,
+                use: {
+                    loader: 'url-loader',
+                },
+            },
+            {
                 test: /\.js$|\.jsx$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader'
                 }
             },
+
+
             {
                 test: /\.css$/,
                 use: [
@@ -36,7 +43,8 @@ module.exports = {
                         loader: 'css-loader',
                     },
                 ]
-            },
+            }
+
         ],
     },
     plugins: [
@@ -46,5 +54,6 @@ module.exports = {
     ],
     resolve: {
         extensions: ['.js', '.jsx'],
-    }
+    },
+   
 };
